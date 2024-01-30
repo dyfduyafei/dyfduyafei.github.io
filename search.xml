@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/posts/16107/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>测试页面</title>
+    <url>/posts/12591/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>有道云链接：<br><a href="http://note.youdao.com/noteshare?id=e8e3fcbeb1428c2da9e0764c796d2660&sub=A81213EC3FB44E408A12B7273BEA0C37">http://note.youdao.com/noteshare?id=e8e3fcbeb1428c2da9e0764c796d2660&amp;sub=A81213EC3FB44E408A12B7273BEA0C37</a></p>
+<p>Spring最重要的功能就是帮助程序员创建对象（也就是IOC），而启动Spring就是为创建Bean对象做准备，所以我们先明白Spring到底是怎么去创建Bean的，也就是先弄明白Bean的生命周期。</p>
+<p>Bean的生命周期就是指：<strong>在Spring中，一个Bean是如何生成的，如何销毁的</strong></p>
+<p>Bean生命周期流程图：<a href="https://www.processon.com/view/link/5f8588c87d9c0806f27358c1">https://www.processon.com/view/link/5f8588c87d9c0806f27358c1</a></p>
+<p>附带资料JFR介绍：<a href="https://zhuanlan.zhihu.com/p/122247741">https://zhuanlan.zhihu.com/p/122247741</a></p>
+<h2 id="Bean的生成过程"><a href="#Bean的生成过程" class="headerlink" title="Bean的生成过程"></a>Bean的生成过程</h2><h3 id="1-生成BeanDefinition"><a href="#1-生成BeanDefinition" class="headerlink" title="1. 生成BeanDefinition"></a>1. 生成BeanDefinition</h3><p>Spring启动的时候会进行扫描，会先调用org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider#scanCandidateComponents(String basePackage)<br>扫描某个包路径，并得到BeanDefinition的Set集合。</p>
+<p><strong>关于Spring启动流程，后续会单独的课详细讲，这里先讲一下Spring扫描的底层实现：</strong></p>
+<p>Spring扫描底层流程：<a href="https://www.processon.com/view/link/61370ee60e3e7412ecd95d43">https://www.processon.com/view/link/61370ee60e3e7412ecd95d43</a></p>
+<ol>
+<li>首先，通过ResourcePatternResolver获得指定包路径下的所有.class文件（Spring源码中将此文件包装成了Resource对象）</li>
+<li>遍历每个Resource对象</li>
+<li>利用MetadataReaderFactory解析Resource对象得到MetadataReader（在Spring源码中MetadataReaderFactory具体的实现类为CachingMetadataReaderFactory，MetadataReader的具体实现类为SimpleMetadataReader）</li>
+<li>利用MetadataReader进行excludeFilters和includeFilters，以及条件注解@Conditional的筛选（条件注解并不能理解：某个类上是否存在@Conditional注解，如果存在则调用注解中所指定的类的match方法进行匹配，匹配成功则通过筛选，匹配失败则pass掉。）</li>
+<li>筛选通过后，基于metadataReader生成ScannedGenericBeanDefinition</li>
+<li>再基于metadataReader判断是不是对应的类是不是接口或抽象类</li>
+<li>如果筛选通过，那么就表示扫描到了一个Bean，将ScannedGenericBeanDefinition加入结果集</li>
+</ol>
+<p>MetadataReader表示类的元数据读取器，主要包含了一个AnnotationMetadata，功能有</p>
+<ol>
+<li>获取类的名字、</li>
+<li>获取父类的名字</li>
+<li>获取所实现的所有接口名</li>
+<li>获取所有内部类的名字</li>
+<li>判断是不是抽象类</li>
+<li>判断是不是接口</li>
+<li>判断是不是一个注解</li>
+<li>获取拥有某个注解的方法集合</li>
+<li>获取类上添加的所有注解信息</li>
+<li>获取类上添加的所有注解类型集合</li>
+</ol>
+<p>值得注意的是，CachingMetadataReaderFactory解析某个.class文件得到MetadataReader对象是利用的<strong>ASM</strong>技术，并没有加载这个类到JVM。并且，最终得到的ScannedGenericBeanDefinition对象，<strong>beanClass属性存储的是当前类的名字，而不是class对象</strong>。（beanClass属性的类型是Object，它即可以存储类的名字，也可以存储class对象）</p>
+<p>最后，上面是说的通过扫描得到BeanDefinition对象，我们还可以通过直接定义BeanDefinition，或解析spring.xml文件的<bean/>，或者@Bean注解得到BeanDefinition对象。（后续课程会分析@Bean注解是怎么生成BeanDefinition的）。</p>
+<h3 id="2-合并BeanDefinition"><a href="#2-合并BeanDefinition" class="headerlink" title="2. 合并BeanDefinition"></a>2. 合并BeanDefinition</h3><p>通过扫描得到所有BeanDefinition之后，就可以根据BeanDefinition创建Bean对象了，但是在Spring中支持父子BeanDefinition，和Java父子类类似，但是完全不是一回事。</p>
+<p>父子BeanDefinition实际用的比较少，使用是这样的，比如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;bean id=<span class="string">&quot;parent&quot;</span> class=<span class="string">&quot;com.zhouyu.service.Parent&quot;</span> scope=<span class="string">&quot;prototype&quot;</span>/&gt;</span><br><span class="line">&lt;bean id=<span class="string">&quot;child&quot;</span> class=<span class="string">&quot;com.zhouyu.service.Child&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这么定义的情况下，child是单例Bean。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;bean id=<span class="string">&quot;parent&quot;</span> class=<span class="string">&quot;com.zhouyu.service.Parent&quot;</span> scope=<span class="string">&quot;prototype&quot;</span>/&gt;</span><br><span class="line">&lt;bean id=<span class="string">&quot;child&quot;</span> class=<span class="string">&quot;com.zhouyu.service.Child&quot;</span> parent=<span class="string">&quot;parent&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>但是这么定义的情况下，child就是原型Bean了。</p>
+<p>因为child的父BeanDefinition是parent，所以会继承parent上所定义的scope属性。</p>
+<p>而在根据child来生成Bean对象之前，需要进行BeanDefinition的合并，得到完整的child的BeanDefinition。</p>
+<h3 id="3-加载类"><a href="#3-加载类" class="headerlink" title="3. 加载类"></a>3. 加载类</h3><p>BeanDefinition合并之后，就可以去创建Bean对象了，而创建Bean就必须实例化对象，而实例化就必须先加载当前BeanDefinition所对应的class，在AbstractAutowireCapableBeanFactory类的createBean()方法中，一开始就会调用：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Class&lt;?&gt; resolvedClass = resolveBeanClass(mbd, beanName);</span><br></pre></td></tr></table></figure>
+
+<p>这行代码就是去加载类，该方法是这么实现的：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (mbd.hasBeanClass()) &#123;</span><br><span class="line"> <span class="keyword">return</span> mbd.getBeanClass();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (System.getSecurityManager() != <span class="literal">null</span>) &#123;</span><br><span class="line"> <span class="keyword">return</span> AccessController.doPrivileged((PrivilegedExceptionAction&lt;Class&lt;?&gt;&gt;) () -&gt;</span><br><span class="line">  doResolveBeanClass(mbd, typesToMatch), getAccessControlContext());</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line"> <span class="keyword">return</span> doResolveBeanClass(mbd, typesToMatch);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasBeanClass</span><span class="params">()</span> &#123;</span><br><span class="line"> <span class="keyword">return</span> (<span class="built_in">this</span>.beanClass <span class="keyword">instanceof</span> Class);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果beanClass属性的类型是Class，那么就直接返回，如果不是，则会根据类名进行加载（doResolveBeanClass方法所做的事情）</p>
+<p>会利用BeanFactory所设置的类加载器来加载类，如果没有设置，则默认使用**ClassUtils.getDefaultClassLoader()**所返回的类加载器来加载。</p>
+<h4 id="ClassUtils-getDefaultClassLoader"><a href="#ClassUtils-getDefaultClassLoader" class="headerlink" title="ClassUtils.getDefaultClassLoader()"></a><strong>ClassUtils.getDefaultClassLoader()</strong></h4><ol>
+<li>优先返回当前线程中的ClassLoader</li>
+<li>线程中类加载器为null的情况下，返回ClassUtils类的类加载器</li>
+<li>如果ClassUtils类的类加载器为空，那么则表示是Bootstrap类加载器加载的ClassUtils类，那么则返回系统类加载器</li>
+</ol>
+<h3 id="4-实例化前"><a href="#4-实例化前" class="headerlink" title="4. 实例化前"></a>4. 实例化前</h3><p>当前BeanDefinition对应的类成功加载后，就可以实例化对象了，但是…</p>
+<p>在Spring中，实例化对象之前，Spring提供了一个扩展点，允许用户来控制是否在某个或某些Bean实例化之前做一些启动动作。这个扩展点叫**InstantiationAwareBeanPostProcessor.postProcessBeforeInstantiation()**。比如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ZhouyuBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title class_">InstantiationAwareBeanPostProcessor</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> Object <span class="title function_">postProcessBeforeInstantiation</span><span class="params">(Class&lt;?&gt; beanClass, String beanName)</span> <span class="keyword">throws</span> BeansException &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">&quot;userService&quot;</span>.equals(beanName)) &#123;</span><br><span class="line">   System.out.println(<span class="string">&quot;实例化前&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如上代码会导致，在userService这个Bean实例化前，会进行打印。</p>
+<p>值得注意的是，postProcessBeforeInstantiation()是有返回值的，如果这么实现：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ZhouyuBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title class_">InstantiationAwareBeanPostProcessor</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> Object <span class="title function_">postProcessBeforeInstantiation</span><span class="params">(Class&lt;?&gt; beanClass, String beanName)</span> <span class="keyword">throws</span> BeansException &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">&quot;userService&quot;</span>.equals(beanName)) &#123;</span><br><span class="line">   System.out.println(<span class="string">&quot;实例化前&quot;</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">UserService</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>userService这个Bean，在实例化前会直接返回一个由我们所定义的UserService对象。如果是这样，表示不需要Spring来实例化了，并且后续的Spring依赖注入也不会进行了，会跳过一些步骤，直接执行初始化后这一步。</p>
+<h3 id="5-实例化"><a href="#5-实例化" class="headerlink" title="5. 实例化"></a>5. 实例化</h3><p>在这个步骤中就会根据BeanDefinition去创建一个对象了。</p>
+<h3 id="5-1-Supplier创建对象"><a href="#5-1-Supplier创建对象" class="headerlink" title="5.1 Supplier创建对象"></a>5.1 Supplier创建对象</h3><p>首先判断BeanDefinition中是否设置了Supplier，如果设置了则调用Supplier的get()得到对象。</p>
+<p>得直接使用BeanDefinition对象来设置Supplier，比如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">AbstractBeanDefinition</span> <span class="variable">beanDefinition</span> <span class="operator">=</span> BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();</span><br><span class="line">beanDefinition.setInstanceSupplier(<span class="keyword">new</span> <span class="title class_">Supplier</span>&lt;Object&gt;() &#123;</span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> Object <span class="title function_">get</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">UserService</span>();</span><br><span class="line"> &#125;</span><br><span class="line">&#125;);</span><br><span class="line">context.registerBeanDefinition(<span class="string">&quot;userService&quot;</span>, beanDefinition);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-工厂方法创建对象"><a href="#5-2-工厂方法创建对象" class="headerlink" title="5.2 工厂方法创建对象"></a>5.2 工厂方法创建对象</h3><p>如果没有设置Supplier，则检查BeanDefinition中是否设置了factoryMethod，也就是工厂方法，有两种方式可以设置factoryMethod，比如：</p>
+<p>方式一：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;bean id=<span class="string">&quot;userService&quot;</span> class=<span class="string">&quot;com.zhouyu.service.UserService&quot;</span> factory-method=<span class="string">&quot;createUserService&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>对应的UserService类为：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> UserService <span class="title function_">createUserService</span><span class="params">()</span> &#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;执行createUserService()&quot;</span>);</span><br><span class="line">  <span class="type">UserService</span> <span class="variable">userService</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserService</span>();</span><br><span class="line">  <span class="keyword">return</span> userService;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;test&quot;</span>);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方式二：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;bean id=<span class="string">&quot;commonService&quot;</span> class=<span class="string">&quot;com.zhouyu.service.CommonService&quot;</span>/&gt;</span><br><span class="line">&lt;bean id=<span class="string">&quot;userService1&quot;</span> factory-bean=<span class="string">&quot;commonService&quot;</span> factory-method=<span class="string">&quot;createUserService&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>对应的CommonService的类为：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CommonService</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> UserService <span class="title function_">createUserService</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">UserService</span>();</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Spring发现当前BeanDefinition方法设置了工厂方法后，就会区分这两种方式，然后调用工厂方法得到对象。</p>
+<p>值得注意的是，我们通过@Bean所定义的BeanDefinition，是存在factoryMethod和factoryBean的，也就是和上面的方式二非常类似，@Bean所注解的方法就是factoryMethod，AppConfig对象就是factoryBean。如果@Bean所所注解的方法是static的，那么对应的就是方式一。</p>
+<h3 id="5-3-推断构造方法"><a href="#5-3-推断构造方法" class="headerlink" title="5.3 推断构造方法"></a>5.3 推断构造方法</h3><p>第一节已经讲过一遍大概原理了，后面有一节课单独分析源码实现。推断完构造方法后，就会使用构造方法来进行实例化了。</p>
+<p>额外的，在推断构造方法逻辑中除开会去选择构造方法以及查找入参对象意外，会还判断是否在对应的类中是否存在使用**@Lookup注解**了方法。如果存在则把该方法封装为LookupOverride对象并添加到BeanDefinition中。</p>
+<p>在实例化时，如果判断出来当前BeanDefinition中没有LookupOverride，那就直接用构造方法反射得到一个实例对象。如果存在LookupOverride对象，也就是类中存在@Lookup注解了的方法，那就会生成一个代理对象。</p>
+<p>@Lookup注解就是<strong>方法注入</strong>，使用demo如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span> OrderService orderService;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">OrderService</span> <span class="variable">orderService</span> <span class="operator">=</span> createOrderService();</span><br><span class="line">  System.out.println(orderService);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Lookup(&quot;orderService&quot;)</span></span><br><span class="line"> <span class="keyword">public</span> OrderService <span class="title function_">createOrderService</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-BeanDefinition的后置处理"><a href="#6-BeanDefinition的后置处理" class="headerlink" title="6. BeanDefinition的后置处理"></a>6. BeanDefinition的后置处理</h3><p>Bean对象实例化出来之后，接下来就应该给对象的属性赋值了。在真正给属性赋值之前，Spring又提供了一个扩展点**MergedBeanDefinitionPostProcessor.postProcessMergedBeanDefinition()**，可以对此时的BeanDefinition进行加工，比如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ZhouyuMergedBeanDefinitionPostProcessor</span> <span class="keyword">implements</span> <span class="title class_">MergedBeanDefinitionPostProcessor</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postProcessMergedBeanDefinition</span><span class="params">(RootBeanDefinition beanDefinition, Class&lt;?&gt; beanType, String beanName)</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">&quot;userService&quot;</span>.equals(beanName)) &#123;</span><br><span class="line">   beanDefinition.getPropertyValues().add(<span class="string">&quot;orderService&quot;</span>, <span class="keyword">new</span> <span class="title class_">OrderService</span>());</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在Spring源码中，AutowiredAnnotationBeanPostProcessor就是一个MergedBeanDefinitionPostProcessor，它的postProcessMergedBeanDefinition()中会去查找注入点，并缓存在AutowiredAnnotationBeanPostProcessor对象的一个Map中（injectionMetadataCache）。</p>
+<h3 id="7-实例化后"><a href="#7-实例化后" class="headerlink" title="7. 实例化后"></a>7. 实例化后</h3><p>在处理完BeanDefinition后，Spring又设计了一个扩展点：**InstantiationAwareBeanPostProcessor.postProcessAfterInstantiation()**，比如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ZhouyuInstantiationAwareBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title class_">InstantiationAwareBeanPostProcessor</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">postProcessAfterInstantiation</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="string">&quot;userService&quot;</span>.equals(beanName)) &#123;</span><br><span class="line">   <span class="type">UserService</span> <span class="variable">userService</span> <span class="operator">=</span> (UserService) bean;</span><br><span class="line">   userService.test();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码就是对userService所实例化出来的对象进行处理。</p>
+<p>这个扩展点，在Spring源码中基本没有怎么使用。</p>
+<h3 id="8-自动注入"><a href="#8-自动注入" class="headerlink" title="8. 自动注入"></a>8. 自动注入</h3><p>这里的自动注入指的是Spring的自动注入，后续依赖注入课程中单独讲</p>
+<h3 id="9-处理属性"><a href="#9-处理属性" class="headerlink" title="9. 处理属性"></a>9. 处理属性</h3><p>这个步骤中，就会处理@Autowired、@Resource、@Value等注解，也是通过**InstantiationAwareBeanPostProcessor.postProcessProperties()**扩展点来实现的，比如我们甚至可以实现一个自己的自动注入功能，比如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ZhouyuInstantiationAwareBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title class_">InstantiationAwareBeanPostProcessor</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> PropertyValues <span class="title function_">postProcessProperties</span><span class="params">(PropertyValues pvs, Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">&quot;userService&quot;</span>.equals(beanName)) &#123;</span><br><span class="line">   <span class="keyword">for</span> (Field field : bean.getClass().getFields()) &#123;</span><br><span class="line">    <span class="keyword">if</span> (field.isAnnotationPresent(ZhouyuInject.class)) &#123;</span><br><span class="line">     field.setAccessible(<span class="literal">true</span>);</span><br><span class="line">     <span class="keyword">try</span> &#123;</span><br><span class="line">      field.set(bean, <span class="string">&quot;123&quot;</span>);</span><br><span class="line">     &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> pvs;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>关于@Autowired、@Resource、@Value的底层源码，会在后续的依赖注入课程中详解。</p>
+<h3 id="10-执行Aware"><a href="#10-执行Aware" class="headerlink" title="10. 执行Aware"></a>10. 执行Aware</h3><p>完成了属性赋值之后，Spring会执行一些回调，包括：</p>
+<ol>
+<li>BeanNameAware：回传beanName给bean对象。</li>
+<li>BeanClassLoaderAware：回传classLoader给bean对象。</li>
+<li>BeanFactoryAware：回传beanFactory给对象。</li>
+</ol>
+<h3 id="11-初始化前"><a href="#11-初始化前" class="headerlink" title="11. 初始化前"></a>11. 初始化前</h3><p>初始化前，也是Spring提供的一个扩展点：**BeanPostProcessor.postProcessBeforeInitialization()**，比如</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ZhouyuBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title class_">BeanPostProcessor</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> Object <span class="title function_">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">&quot;userService&quot;</span>.equals(beanName)) &#123;</span><br><span class="line">   System.out.println(<span class="string">&quot;初始化前&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> bean;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>利用初始化前，可以对进行了依赖注入的Bean进行处理。</p>
+<p>在Spring源码中：</p>
+<ol>
+<li><p>InitDestroyAnnotationBeanPostProcessor会在初始化前这个步骤中执行@PostConstruct的方法，</p>
+</li>
+<li><p>ApplicationContextAwareProcessor会在初始化前这个步骤中进行其他Aware的回调：</p>
+</li>
+<li><p>EnvironmentAware：回传环境变量</p>
+</li>
+<li><p>EmbeddedValueResolverAware：回传占位符解析器</p>
+</li>
+<li><p>ResourceLoaderAware：回传资源加载器</p>
+</li>
+<li><p>ApplicationEventPublisherAware：回传事件发布器</p>
+</li>
+<li><p>MessageSourceAware：回传国际化资源</p>
+</li>
+<li><p>ApplicationStartupAware：回传应用其他监听对象，可忽略</p>
+</li>
+<li><p>ApplicationContextAware：回传Spring容器ApplicationContext</p>
+</li>
+</ol>
+<h3 id="12-初始化"><a href="#12-初始化" class="headerlink" title="12. 初始化"></a>12. 初始化</h3><ol>
+<li>查看当前Bean对象是否实现了InitializingBean接口，如果实现了就调用其afterPropertiesSet()方法</li>
+<li>执行BeanDefinition中指定的初始化方法</li>
+</ol>
+<h3 id="13-初始化后"><a href="#13-初始化后" class="headerlink" title="13. 初始化后"></a>13. 初始化后</h3><p>这是Bean创建生命周期中的最后一个步骤，也是Spring提供的一个扩展点：**BeanPostProcessor.postProcessAfterInitialization()**，比如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ZhouyuBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title class_">BeanPostProcessor</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> Object <span class="title function_">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">&quot;userService&quot;</span>.equals(beanName)) &#123;</span><br><span class="line">   System.out.println(<span class="string">&quot;初始化后&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> bean;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以在这个步骤中，对Bean最终进行处理，Spring中的<strong>AOP就是基于初始化后实现</strong>的，<strong>初始化后返回的对象才是最终的Bean对象</strong>。</p>
+<h3 id="总结BeanPostProcessor"><a href="#总结BeanPostProcessor" class="headerlink" title="总结BeanPostProcessor"></a>总结BeanPostProcessor</h3><ol>
+<li>InstantiationAwareBeanPostProcessor.postProcessBeforeInstantiation()</li>
+<li>实例化</li>
+<li>MergedBeanDefinitionPostProcessor.postProcessMergedBeanDefinition()</li>
+<li>InstantiationAwareBeanPostProcessor.postProcessAfterInstantiation()</li>
+<li>自动注入</li>
+<li>InstantiationAwareBeanPostProcessor.postProcessProperties()</li>
+<li>Aware对象</li>
+<li>BeanPostProcessor.postProcessBeforeInitialization()</li>
+<li>初始化</li>
+<li>BeanPostProcessor.postProcessAfterInitialization()</li>
+</ol>
+]]></content>
+      <categories>
+        <category>源码解析</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+        <tag>bean</tag>
+      </tags>
+  </entry>
+</search>
