@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/posts/16107/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p><img src="https://cdn.nlark.com/yuque/0/2024/png/1734866/1706595350173-2a49af9c-86f5-403f-9f18-9a604858a5e4.png" alt="image.png"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>测试页面</title>
     <url>/posts/12591/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>有道云链接：<br><a href="http://note.youdao.com/noteshare?id=e8e3fcbeb1428c2da9e0764c796d2660&sub=A81213EC3FB44E408A12B7273BEA0C37">http://note.youdao.com/noteshare?id=e8e3fcbeb1428c2da9e0764c796d2660&amp;sub=A81213EC3FB44E408A12B7273BEA0C37</a></p>
@@ -184,6 +165,55 @@
       <tags>
         <tag>spring</tag>
         <tag>bean</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/posts/16107/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p><img src="/../assets/img/index.jpg" alt="index.jpg"><img src="/" alt="image.png"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>linux服务器免密码登录</title>
+    <url>/posts/42537/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="linux服务器免密码登录"><a href="#linux服务器免密码登录" class="headerlink" title="linux服务器免密码登录"></a>linux服务器免密码登录</h1><h2 id="1-linux下生成秘钥"><a href="#1-linux下生成秘钥" class="headerlink" title="1.linux下生成秘钥"></a>1.linux下生成秘钥</h2><p>####ssh-keygen -t rsa</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">@default ➜ ~  ssh-keygen -t rsa</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/root/.ssh/id_rsa): </span><br><span class="line">Created directory &#x27;/root/.ssh&#x27;.</span><br><span class="line">Enter passphrase (empty for no passphrase): </span><br><span class="line">Enter same passphrase again: </span><br><span class="line">Your identification has been saved in /root/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /root/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:XXcSsHNjeEG6HxRL4C1X0Fo1WhxTedZelP7f4ZAGMPA root@default</span><br><span class="line">The key&#x27;s randomart image is:</span><br><span class="line">+---[RSA 2048]----+</span><br><span class="line">|       ..   o+OO%|</span><br><span class="line">|        .o . *oXX|</span><br><span class="line">|         Eo O.&amp;=+|</span><br><span class="line">|         . o @.=.|</span><br><span class="line">|        S . o o .|</span><br><span class="line">|             = o.|</span><br><span class="line">|            . + +|</span><br><span class="line">|               .o|</span><br><span class="line">|                 |</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成两个文件-id-rsa和id-rsa-pub"><a href="#生成两个文件-id-rsa和id-rsa-pub" class="headerlink" title="生成两个文件 id_rsa和id_rsa.pub"></a>生成两个文件 id_rsa和id_rsa.pub</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">@default ➜ ~  cd .ssh </span><br><span class="line">@default ➜ .ssh  ll</span><br><span class="line">总用量 8.0K</span><br><span class="line">-rw-------. 1 root root 1.7K 1月   6 11:45 id_rsa</span><br><span class="line">-rw-r--r--. 1 root root  394 1月   6 11:45 id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看下id-rsa-pub的内容"><a href="#查看下id-rsa-pub的内容" class="headerlink" title="查看下id_rsa.pub的内容"></a>查看下id_rsa.pub的内容</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">@default ➜ .ssh  cat id_rsa.pub </span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCamZj1xxoT0dc5aUAJ3cxmOmgtovlfi6PNoqlY371AP4f3ckksEm5Yuffge8BoqQsX2uYwrh6APRu4ZVSMqtg3aKbeLp99mKP6tX7+Plscz67T29T9MkkfbTG3x6S7/H0+aTyGDg4wLhls20mTdKHrki+Gq8CYzOIrYuto2amfXEEMDzMQvODS+VW+aXozOK4NhCkgtRCNMOvrwRdpJH8ixpiJZXrweVJQZ5DxVfEw2vDKMEau1PSp23Jp33CL/ImXCIsi65StBZbEFux5ot05CYaacze4Ddy1ewrzcCWJuqfU0Sl2qSRANMSUt3NtmdUKlH/sbjuExxdLA3i8tRVz root@default</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看下id-rsa的内容"><a href="#查看下id-rsa的内容" class="headerlink" title="查看下id_rsa的内容"></a>查看下id_rsa的内容</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">@default ➜ .ssh  cat id_rsa</span><br><span class="line">-----BEGIN RSA PRIVATE KEY-----</span><br><span class="line">MIIEpAIBAAKCAQEAmpmY9ccaE9HXOWlACd3MZjpoLaL5X4ujzaKpWN+9QD+H93JJ</span><br><span class="line">LBJuWLn34HvAaKkLF9rmMK4egD0buGVUjKrYN2im3i6ffZij+rV+/j5bHM+u09vU</span><br><span class="line">/TJJH20xt8eku/x9Pmk8hg4OMC4ZbNtJk3Sh65IvhqvAmMziK2LraNmpn1xBDA8z</span><br><span class="line">ELzg0vlVvml6MziuDYQpILUQjTDr68EXaSR/IsaYiWV68HlSUGeQ8VXxMNrwyjBG</span><br><span class="line">rtT0qdtyad9wi/yJlwiLIuuUrQWWxBbseaLdOQmGmnM3uA3ctXsK83Alibqn1NEp</span><br><span class="line">dqkkQDTElLdzbZnVCpR/7G47hMcXSwN4vLUVcwIDAQABAoIBAH6CZF3zMI65b3KG</span><br><span class="line">gyXPv1yEPQ3jSEd8YG18xzF33Uj+9Ad0GRacennWrFWhTuEWO4Ko2SdKxKDR4KYz</span><br><span class="line">HU4C2+3zkGFOK6s+Ril5bdMlOa/I71pkkNUk2huCYmXuVAqU4fQ5b5KPW+LnRl0C</span><br><span class="line">0SF+FqZLuOJuF6uyNP2l89eYDirdsKEdHTUQFyk1FQn6yxxvTcgtAQbNTtT+94aj</span><br><span class="line">B2QyZSTusp6yBabLH94kFYm1sZYJTRs9tBRsZhF2P3LRkb/5Fo/L+v9QSeI/f7vB</span><br><span class="line">8mOiAwWPGl8HxhO0wWkZs7wyoYs4fCoDLPDX0qa/3bANKoc50x9kSnAbBXi0pgfQ</span><br><span class="line">J9A5QMkCgYEAyuQKwPbGlVu91dYPOetKpNx6rHNGdS7ZJw7fB7qOy26LkPMsnGzy</span><br><span class="line">E29tHAo37NhfNxi6I3MFiaTOwef1D1BU6lw8P1kudIyrMkxrIsDco86SKMs1yCgV</span><br><span class="line">S3nVu09o6sptZUsN4thJPlTsbEocDBTYbfEjnzQp+GyPRbSslLo+p00CgYEAwxGH</span><br><span class="line">zC6WTXvJA8WBq6fj58nwca9YOvXyUb3H40hALrPCPgDUzMV8PoY5Xl4v73esk7oH</span><br><span class="line">59TFakaVfWu38J4w3kAeMRt6vS2ODAbkm0+I9l0zNJgcFlyeOQmuO86ilKhU1qTv</span><br><span class="line">2fLxlsCDllB75UVOcKLIfMKSDbzAcX+gRDfrz78CgYEAvChkOLQjUlx0Xx1XnZUx</span><br><span class="line">8lZuhgOZ8g7yYCCQgfBngQ4R7Ok4FBGNJq0NeRWY69N16fjKlxmSpyXqgTWGtR8A</span><br><span class="line">wR+s1+rzBC94jPsF2IMXm+p07dQXGnrh1M82gbGRUT1N2sSSKi//LQlBAORxwlqK</span><br><span class="line">pNse+AQ+cB7td+2op31ZoXkCgYB8ZTSFR/w/gz3oMs6DafhTexrjVJ9eUjNqXy0W</span><br><span class="line">Sp/raGTpZ1xNDW8y7COvgz7sZhPezRZ3h98w67wvFD9jqW2efaMDS/PUqjVYhBjK</span><br><span class="line">1kiQW1TpKEtZE00vMHY024wgYsxfaSUvhtb7fN8tPzwTNERWXeiebvH24rSSbIIG</span><br><span class="line">nua5PwKBgQCqXp4lrVmjCIPXJTi5m/zVrUie9Q9syn2/0/hwLl7Eg6RgwzCjxdNN</span><br><span class="line">oUX0lgVBSFF+u0LoH4qxjAMt9qYjjcYKev6CGXDhsPklWGCBewfMNBI/p2oRzfqW</span><br><span class="line">yVVUJe6XFe2MQVLRHtbQyEfyPkQyLxmUEljF8CowGS1FPEFvFmFMkw==</span><br><span class="line">-----END RSA PRIVATE KEY-----</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/dyfSama/pic-bed/raw/master/md/image-20210113103645123.png" alt="image-20210113103645123"></p>
+<h2 id="2-远程免密登录"><a href="#2-远程免密登录" class="headerlink" title="2.远程免密登录"></a>2.远程免密登录</h2><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>简单的说就是A生成公钥后把公钥的串（字符串）添加到B的authorized_keys文件中。</p>
+<p>另外要注意的是权限问题。.ssh目录要700,authorized_keys文件要600。也有说是755和655点，反正后面两个不能有写权限。</p>
+<img src="https://gitee.com/dyfSama/pic-bed/raw/master/md/image-20210113103645504.png" alt="image-20210113103645504" style="zoom:80%;" />
+
+<h5 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub   用户名@ip地址</span><br></pre></td></tr></table></figure>
+
+<h5 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">先    scp ~/.ssh/id_dsa.pub 用户名@IP地址:/tmp </span><br><span class="line">然后   cat /tmp/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>ssh</tag>
       </tags>
   </entry>
 </search>
