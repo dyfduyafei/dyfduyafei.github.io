@@ -10,21 +10,38 @@ var metricsName = (metrics === 'pv_count' ? '访问次数' : (metrics === 'visit
 var color = document.documentElement.getAttribute('data-theme') === 'light' ? '#4c4948' : 'rgba(255,255,255,0.7)'
 
 // 访问地图
-function mapChart () {
+function render(type){
+    if(type == '1'){
+        let paramUrl1 = '&start_date=' + start_date + '&end_date=' + end_date + '&metrics=' + metrics + '&method=overview/getDistrictRpt';
+        let mapChartData = {"result":{"offset":0,"timeSpan":["2024\/01\/01 - 2024\/02\/06"],"fields":["simple_date_title","pv_count"],"total":2,"sum":[[5631],[]],"pageSum":[[5631],[],[]],"items":[[["2024\/02\/01 - 2024\/02\/06"],["2024\/01\/01 - 2024\/01\/31"]],[[163],[5468]],[],[]]}};
+        mapChart(mapChartData);
+    }
+    if(type == '2'){
+        let paramUrl2 = '&start_date=' + start_date + '&end_date=' + end_date + '&metrics=' + metrics + '&method=trend/time/a&gran=month';
+        let trendsChartData = {"result":{"offset":0,"timeSpan":["2024\/01\/01 - 2024\/02\/06"],"fields":["simple_date_title","pv_count"],"total":2,"sum":[[5631],[]],"pageSum":[[5631],[],[]],"items":[[["2024\/02\/01 - 2024\/02\/06"],["2024\/01\/01 - 2024\/01\/31"]],[[163],[5468]],[],[]]}};
+        trendsChart(trendsChartData);
+    }
+
+    if(type == '3'){
+        let paramUrl3 = '&start_date=' + start_date + '&end_date=' + end_date + '&metrics=' + metrics + '&method=source/all/a';
+        let sourcesChartData = {"result":{"timeSpan":["2024\/01\/01 - 2024\/02\/06"],"fields":["source_type_title","pv_count"],"total":4,"sum":[[5631],[]],"pageSum":[[5631],[],[]],"items":[[["--"],["--"],["2024\/01\/01 - 2024\/01\/31"],["2024\/02\/01 - 2024\/02\/06"]],[[5624],[7],["--"],["--"]],[],[]]}};
+        sourcesChart(sourcesChartData);
+    }
+}
+
+
+function mapChart(data) {
     let script = document.createElement("script")
-    // let paramUrl = '&start_date=' + start_date + '&end_date=' + end_date + '&metrics=' + metrics + '&method=visit/district/a'; // 更换请求地址
-    let paramUrl = '&start_date=' + start_date + '&end_date=' + end_date + '&metrics=' + metrics + '&method=overview/getDistrictRpt';
-    fetch(dataUrl + paramUrl).then(data => data.json()).then(data => {
-        let mapName = data.result.items[0]
-        let mapValue = data.result.items[1]
-        let mapArr = []
-        let max = mapValue[0][0]
-        for (let i = 0; i < mapName.length; i++) {
-            // mapArr.push({ name: mapName[i][0].name, value: mapValue[i][0] })
-            mapArr.push({ name: mapName[i][0], value: mapValue[i][0] })
-        }
-        let mapArrJson = JSON.stringify(mapArr)
-        script.innerHTML = `
+    let mapName = data.result.items[0]
+    let mapValue = data.result.items[1]
+    let mapArr = []
+    let max = mapValue[0][0]
+    for (let i = 0; i < mapName.length; i++) {
+        // mapArr.push({ name: mapName[i][0].name, value: mapValue[i][0] })
+        mapArr.push({name: mapName[i][0], value: mapValue[i][0]})
+    }
+    let mapArrJson = JSON.stringify(mapArr)
+    script.innerHTML = `
       var mapChart = echarts.init(document.getElementById('map-chart'), 'light');
       var mapOption = {
         title: {
@@ -80,28 +97,24 @@ function mapChart () {
       window.addEventListener("resize", () => { 
         mapChart.resize();
       });`
-        document.getElementById('map-chart').after(script);
-    }).catch(function (error) {
-        console.log(error);
-    });
+    document.getElementById('map-chart').after(script);
 }
 
 // 访问趋势
-function trendsChart () {
+function trendsChart(data) {
     let script = document.createElement("script")
-    let paramUrl = '&start_date=' + start_date + '&end_date=' + end_date + '&metrics=' + metrics + '&method=trend/time/a&gran=month'
-    fetch(dataUrl + paramUrl).then(data => data.json()).then(data => {
-        let monthArr = []
-        let monthValueArr = []
-        let monthName = data.result.items[0]
-        let monthValue = data.result.items[1]
-        for (let i = monthName.length - 1; i >= 0; i--) {
-            monthArr.push(monthName[i][0].substring(0, 7).replace('/', '-'))
-            monthValueArr.push(monthValue[i][0] !== '--' ? monthValue[i][0] : 0)
-        }
-        let monthArrJson = JSON.stringify(monthArr)
-        let monthValueArrJson = JSON.stringify(monthValueArr)
-        script.innerHTML = `
+
+    let monthArr = []
+    let monthValueArr = []
+    let monthName = data.result.items[0]
+    let monthValue = data.result.items[1]
+    for (let i = monthName.length - 1; i >= 0; i--) {
+        monthArr.push(monthName[i][0].substring(0, 7).replace('/', '-'))
+        monthValueArr.push(monthValue[i][0] !== '--' ? monthValue[i][0] : 0)
+    }
+    let monthArrJson = JSON.stringify(monthArr)
+    let monthValueArrJson = JSON.stringify(monthValueArr)
+    script.innerHTML = `
       var trendsChart = echarts.init(document.getElementById('trends-chart'), 'light');
       var trendsOption = {
         title: {
@@ -204,25 +217,20 @@ function trendsChart () {
       window.addEventListener("resize", () => { 
         trendsChart.resize();
       });`
-        document.getElementById('trends-chart').after(script);
-    }).catch(function (error) {
-        console.log(error);
-    });
+    document.getElementById('trends-chart').after(script);
 }
 
 // 访问来源
-function sourcesChart () {
+function sourcesChart(data) {
     let script = document.createElement("script")
-    let paramUrl = '&start_date=' + start_date + '&end_date=' + end_date + '&metrics=' + metrics + '&method=source/all/a';
-    fetch(dataUrl + paramUrl).then(data => data.json()).then(data => {
-        let sourcesName = data.result.items[0]
-        let sourcesValue = data.result.items[1]
-        let sourcesArr = []
-        for (let i = 0; i < sourcesName.length; i++) {
-            sourcesArr.push({ name: sourcesName[i][0].name, value: sourcesValue[i][0] })
-        }
-        let sourcesArrJson = JSON.stringify(sourcesArr)
-        script.innerHTML = `
+    let sourcesName = data.result.items[0]
+    let sourcesValue = data.result.items[1]
+    let sourcesArr = []
+    for (let i = 0; i < sourcesName.length; i++) {
+        sourcesArr.push({name: sourcesName[i][0].name, value: sourcesValue[i][0]})
+    }
+    let sourcesArrJson = JSON.stringify(sourcesArr)
+    script.innerHTML = `
       var sourcesChart = echarts.init(document.getElementById('sources-chart'), 'light');
       var sourcesOption = {
         title: {
@@ -265,10 +273,7 @@ function sourcesChart () {
       window.addEventListener("resize", () => { 
         sourcesChart.resize();
       });`
-        document.getElementById('sources-chart').after(script);
-    }).catch(function (error) {
-        console.log(error);
-    });
+    document.getElementById('sources-chart').after(script);
 }
 
 function switchVisitChart () {
@@ -313,8 +318,8 @@ function switchVisitChart () {
     }
 }
 
-if (document.getElementById('map-chart')) mapChart()
-if (document.getElementById('trends-chart')) trendsChart()
-if (document.getElementById('sources-chart')) sourcesChart()
+if (document.getElementById('map-chart')) render(1)
+if (document.getElementById('trends-chart')) render(2)
+if (document.getElementById('sources-chart')) render(3)
 
 document.getElementById("darkmode").addEventListener("click", function () { setTimeout(switchVisitChart, 100) })

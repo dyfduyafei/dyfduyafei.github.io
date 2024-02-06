@@ -4,7 +4,16 @@
   <url>
     <loc>https://dyfduyafei.github.io/census/index.html</loc>
     
-    <lastmod>2024-02-01</lastmod>
+    <lastmod>2024-02-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dyfduyafei.github.io/privacy/index.html</loc>
+    
+    <lastmod>2024-02-06</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -29,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://dyfduyafei.github.io/redis/index.html</loc>
+    <loc>https://dyfduyafei.github.io/spring/index.html</loc>
     
     <lastmod>2024-01-31</lastmod>
     
@@ -38,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://dyfduyafei.github.io/spring/index.html</loc>
+    <loc>https://dyfduyafei.github.io/redis/index.html</loc>
     
     <lastmod>2024-01-31</lastmod>
     
@@ -65,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://dyfduyafei.github.io/posts/16107/</loc>
+    <loc>https://dyfduyafei.github.io/posts/42537/</loc>
     
     <lastmod>2024-01-31</lastmod>
     
@@ -74,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://dyfduyafei.github.io/posts/42537/</loc>
+    <loc>https://dyfduyafei.github.io/posts/16107/</loc>
     
     <lastmod>2024-01-31</lastmod>
     
@@ -103,36 +112,36 @@
 
   <url>
     <loc>https://dyfduyafei.github.io/</loc>
-    <lastmod>2024-02-05</lastmod>
+    <lastmod>2024-02-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://dyfduyafei.github.io/tags/spring/</loc>
-    <lastmod>2024-02-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dyfduyafei.github.io/tags/bean/</loc>
-    <lastmod>2024-02-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://dyfduyafei.github.io/tags/linux/</loc>
-    <lastmod>2024-02-05</lastmod>
+    <lastmod>2024-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://dyfduyafei.github.io/tags/ssh/</loc>
-    <lastmod>2024-02-05</lastmod>
+    <lastmod>2024-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dyfduyafei.github.io/tags/spring/</loc>
+    <lastmod>2024-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dyfduyafei.github.io/tags/bean/</loc>
+    <lastmod>2024-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -140,15 +149,15 @@
 
   
   <url>
-    <loc>https://dyfduyafei.github.io/categories/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
-    <lastmod>2024-02-05</lastmod>
+    <loc>https://dyfduyafei.github.io/categories/linux/</loc>
+    <lastmod>2024-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://dyfduyafei.github.io/categories/linux/</loc>
-    <lastmod>2024-02-05</lastmod>
+    <loc>https://dyfduyafei.github.io/categories/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2024-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
