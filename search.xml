@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/posts/16107/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p><img src="/../assets/img/index.jpg" alt="index.jpg"><img src="/" alt="image.png"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>linux服务器免密码登录</title>
     <url>/posts/42537/</url>
     <content><![CDATA[<h1 id="linux服务器免密码登录"><a href="#linux服务器免密码登录" class="headerlink" title="linux服务器免密码登录"></a>linux服务器免密码登录</h1><h2 id="1-linux下生成秘钥"><a href="#1-linux下生成秘钥" class="headerlink" title="1.linux下生成秘钥"></a>1.linux下生成秘钥</h2><p>####ssh-keygen -t rsa</p>
@@ -31,23 +50,164 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/posts/16107/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p><img src="/../assets/img/index.jpg" alt="index.jpg"><img src="/" alt="image.png"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>单例模式</title>
+    <url>/posts/46132/</url>
+    <content><![CDATA[<h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><blockquote>
+<p>单例模式是指确保一个类在任何情况下都绝对只有一个实例,并提供一个全局访问点<br>单例模式是创建型模式</p>
+</blockquote>
+<h2 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h2><h2 id="饿汉式单例模式"><a href="#饿汉式单例模式" class="headerlink" title="饿汉式单例模式"></a>饿汉式单例模式</h2><p>饿汉式单例模式在类加载的时候就立即初始化,并且创建单例对象。绝对线程安全，再线程还没有出现以前就实例化了， 不可能存在访问安全问题。</p>
+<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HungrySingleton</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">HungrySingleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HungrySingleton</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HungrySingleton</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> HungrySingleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a>静态代码块</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HungryStaticSingleton</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> HungryStaticSingleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        instance = <span class="keyword">new</span> <span class="title class_">HungryStaticSingleton</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HungryStaticSingleton</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> HungryStaticSingleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>📌不管对象用与不用都占着空间，浪费内存。</p>
+</blockquote>
+<h2 id="懒汉式单例模式"><a href="#懒汉式单例模式" class="headerlink" title="懒汉式单例模式"></a>懒汉式单例模式</h2><p>懒汉式单例模式的特点是，单例对象要在被使用时才会初始化。</p>
+<h3 id="简单模式"><a href="#简单模式" class="headerlink" title="简单模式"></a>简单模式</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Lazy001SimpleSingleton</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Lazy001SimpleSingleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Lazy001SimpleSingleton</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Lazy001SimpleSingleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">             <span class="comment">// p1</span></span><br><span class="line">            instance = <span class="keyword">new</span> <span class="title class_">Lazy001SimpleSingleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>📌明显存在线程安全问题<br>线程1创建对象时，线程2也可能跑到** p1**, 结果就是创建两个不同的对象</p>
+</blockquote>
+<h3 id="简单同步"><a href="#简单同步" class="headerlink" title="简单同步"></a>简单同步</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Lazy002SyncSimpleSingleton</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Lazy002SyncSimpleSingleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Lazy002SyncSimpleSingleton</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// p1</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> Lazy002SyncSimpleSingleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> <span class="title class_">Lazy002SyncSimpleSingleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<blockquote>
+<p>📌线程安全问题解决了， 但是线程数量比较多的情况下， 会导致大量线程阻塞在<strong>p1</strong>，从而导致程序性能大幅下降。</p>
+</blockquote>
+<h3 id="双重检查（DLC）"><a href="#双重检查（DLC）" class="headerlink" title="双重检查（DLC）"></a>双重检查（DLC）</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Lazy003DLCSingleton</span> &#123;</span><br><span class="line">    <span class="comment">// volatile 解决指令排序问题</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">Lazy003DLCSingleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Lazy003DLCSingleton</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Lazy003DLCSingleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// instance有值后，新来的线程不用阻塞直接返回</span></span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Lazy003DLCSingleton.class) &#123;</span><br><span class="line">                <span class="comment">// 避免重复创建instance</span></span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;  <span class="comment">// p1</span></span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Lazy003DLCSingleton</span>();</span><br><span class="line">                    <span class="comment">// 1. 分配内存给这个对象</span></span><br><span class="line">                    <span class="comment">// 2. 初始化对象</span></span><br><span class="line">                    <span class="comment">// 3. 设置instance指向刚分配的内存地址</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>📌为什么需要volatile：</p>
+<p>正常的创建对象时  1→ 2 → 3，<br>但是如果发生了cpu指令排序，可能是 1→ 3→2&#x20;<br>假如线程1创建对象执行到 步骤1、步骤3，还没有进行对象初始化, 这时线程2 执行到p1 就会判断 instance不为空，线程2 直接返回了空对象。</p>
+<p>使用volatile 可以避免指令重排，保证创建对象时  1→ 2 → 3</p>
+</blockquote>
+<h3 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h3><p>DLC总归要加锁，对程序性能还是存在一定的影响。从类初始化的角度，使用静态内部类的方式</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Lazy004InnerClassSingleton</span> &#123;</span><br><span class="line">    <span class="comment">// 使用 Lazy004InnerClassSingleton  时， 默认会先初始化内部类</span></span><br><span class="line">    <span class="comment">// 如果没使用， 则内部类是不加载的</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Lazy004InnerClassSingleton</span><span class="params">()</span> &#123;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// static是为了单例的空间共享，final保证这个方法不会被重写，重载</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Lazy004InnerClassSingleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 返回结果前， 一定会先加载内部类</span></span><br><span class="line">        <span class="keyword">return</span> LazyHolder.instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 默认不加载</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">LazyHolder</span> &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Lazy004InnerClassSingleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Lazy004InnerClassSingleton</span>();</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>📌兼顾饿汉式单例模式的内存浪费问题和synchronized 的性能问题<br>内部类一定是要在方法调用之前初始化的,巧妙的避免了线程安全问题</p>
+</blockquote>
+<p>看似挺完美了，其实还是有问题</p>
+<h4 id="反射破坏单例"><a href="#反射破坏单例" class="headerlink" title="反射破坏单例"></a>反射破坏单例</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LazySingletonTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException, </span><br><span class="line">    NoSuchMethodException, InvocationTargetException, InstantiationException,</span><br><span class="line">     IllegalAccessException &#123;</span><br><span class="line">     </span><br><span class="line">        Class&lt;Lazy004InnerClassSingleton&gt; clazz = Lazy004InnerClassSingleton.class;</span><br><span class="line">        Constructor&lt;Lazy004InnerClassSingleton&gt; c = clazz.getDeclaredConstructor(<span class="literal">null</span>);</span><br><span class="line">        </span><br><span class="line">        c.setAccessible(<span class="literal">true</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="type">Object</span> <span class="variable">o1</span> <span class="operator">=</span> c.newInstance();</span><br><span class="line">        <span class="type">Object</span> <span class="variable">o2</span> <span class="operator">=</span> c.newInstance();</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="number">01</span> == <span class="number">02</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="优化一下"><a href="#优化一下" class="headerlink" title="优化一下"></a>优化一下</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Lazy004InnerClassSingleton</span> &#123;</span><br><span class="line">    <span class="comment">// 使用 Lazy004InnerClassSingleton  时， 默认会先初始化内部类</span></span><br><span class="line">    <span class="comment">// 如果没使用， 则内部类是不加载的</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Lazy004InnerClassSingleton</span><span class="params">()</span> &#123;</span><br><span class="line">         <span class="keyword">if</span> (LazyHolder.instance != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;不允许创建多个实例&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// static是为了单例的空间共享，final保证这个方法不会被重写，重载</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Lazy004InnerClassSingleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 返回结果前， 一定会先加载内部类</span></span><br><span class="line">        <span class="keyword">return</span> LazyHolder.instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 默认不加载</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">LazyHolder</span> &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Lazy004InnerClassSingleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Lazy004InnerClassSingleton</span>();</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样就完美了。</p>
 ]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>volatile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NPM-包管理器</title>
+    <url>/posts/411/</url>
+    <content><![CDATA[<h1 id="NPM-包管理器"><a href="#NPM-包管理器" class="headerlink" title="NPM-包管理器"></a>NPM-包管理器</h1><h2 id="npm安装"><a href="#npm安装" class="headerlink" title="npm安装"></a>npm安装</h2><p>随node安装<code>nvm -v</code> 显示版本</p>
+<h2 id="npm常用命令"><a href="#npm常用命令" class="headerlink" title="npm常用命令"></a>npm常用命令</h2><h3 id="npm-config"><a href="#npm-config" class="headerlink" title="npm config"></a>npm config</h3><p>管理npm 配置文件，该<code>npm config</code>命令可用于更新和编辑用户和全局 <code>npmrc</code> 文件的内容。</p>
+<p><code>.nmprc </code> 文件位置：  <code>$HOME/.npmrc </code> 比如<code> /Users/duyafei/.npmrc</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> &lt;key&gt;=&lt;value&gt; [&lt;key&gt;=&lt;value&gt; ...]</span><br><span class="line">npm config get [&lt;key&gt; [&lt;key&gt; ...]]</span><br><span class="line">npm config delete &lt;key&gt; [&lt;key&gt; ...]</span><br><span class="line">npm config list [--json]</span><br><span class="line">npm config edit</span><br><span class="line">npm config fix</span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span>: c</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置镜像仓库&#x20;</li>
+</ul>
+<pre><code>`npm config set registry `&lt;https://registry.npmmirror.com&gt;
+</code></pre>
+<ul>
+<li>设置全局仓库地址 &#x20;</li>
+</ul>
+<pre><code>`npm config set prefix`  你的目录； 默认 `&#123;prefix&#125;/bin/node` 比如 `/opt/middleware/nvm/versions/node/v21.7.1`
+</code></pre>
+<ul>
+<li>设置全局缓存地址 &#x20;</li>
+</ul>
+<pre><code>`npm config set cache`  你的目录 ； 默认 `~/.npm`
+</code></pre>
+<h3 id="npm-install"><a href="#npm-install" class="headerlink" title="npm-install"></a>npm-install</h3><p>安装一个包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install [&lt;package-spec&gt; ...]</span><br><span class="line"></span><br><span class="line">aliases: add, i, <span class="keyword">in</span>, ins, inst, insta, instal, isnt, isnta, isntal, isntall</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>本地安装</li>
+</ul>
+<pre><code>`npm install  pnpm`
+</code></pre>
+<ul>
+<li>全局安装</li>
+</ul>
+<pre><code>`npm install -g pnpm`
+</code></pre>
+<h3 id="npm-uninstall"><a href="#npm-uninstall" class="headerlink" title="npm-uninstall"></a>npm-uninstall</h3><p>卸载 包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall [&lt;@scope&gt;/]&lt;pkg&gt;...</span><br><span class="line"></span><br><span class="line">aliases: <span class="built_in">unlink</span>, remove, <span class="built_in">rm</span>, r, un</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除 sax， 同时 从<code> package.json</code>中移除 sax依赖</li>
+</ul>
+<pre><code>`npm uninstall sax`  &amp;#x20;
+</code></pre>
+<ul>
+<li>删除 sax， <code> package.json</code> 不移除sax依赖</li>
+</ul>
+<pre><code>`npm uninstall lodash --no-save`
+</code></pre>
+<h3 id="npm-root"><a href="#npm-root" class="headerlink" title="npm root"></a>npm root</h3><p>显示 npm 安装根目录</p>
+<ul>
+<li>显示本地安装的目录</li>
+</ul>
+<pre><code>`npm root`   结果：` /Users/duyafei/node_modules`
+</code></pre>
+<ul>
+<li>显示全局包安装的目录</li>
+</ul>
+<pre><code>`npm root -g`  结果： ` /opt/middleware/nvm/versions/node/v21.7.1/lib/node_modules`
+</code></pre>
+<h2 id="查看npm配置"><a href="#查看npm配置" class="headerlink" title="查看npm配置"></a>查看npm配置</h2><h4 id="查看-当前配置"><a href="#查看-当前配置" class="headerlink" title="查看 当前配置"></a>查看 当前配置</h4><ul>
+<li><code>npm config list</code>   <code>npm config ls</code></li>
+</ul>
+<pre><code><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">; <span class="string">&quot;user&quot;</span> config from /Users/duyafei/.npmrc</span><br><span class="line"></span><br><span class="line">//repo3.corpautohome.com/repository/npm-group/:_password = (protected)</span><br><span class="line">//repo3.corpautohome.com/repository/npm-group/:username = <span class="string">&quot;npm&quot;</span></span><br><span class="line">registry = <span class="string">&quot;https://registry.npmmirror.com/&quot;</span></span><br><span class="line">strict-ssl = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">; node bin location = /opt/middleware/nvm/versions/node/v21.7.1/bin/node</span><br><span class="line">; node version = v21.7.1</span><br><span class="line">; npm <span class="built_in">local</span> prefix = /Users/duyafei</span><br><span class="line">; npm version = 10.5.0</span><br><span class="line">; cwd = /Users/duyafei</span><br><span class="line">; HOME = /Users/duyafei</span><br><span class="line">; Run `npm config <span class="built_in">ls</span> -l` to show all defaults.</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h4 id="查看所有默认值"><a href="#查看所有默认值" class="headerlink" title="查看所有默认值"></a>查看所有默认值</h4><ul>
+<li><code>npm config ls -l</code>  <code>npm config list -l</code>&#x20;</li>
+</ul>
+<pre><code><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">; <span class="string">&quot;default&quot;</span> config from default values</span><br><span class="line"></span><br><span class="line">_auth = (protected)</span><br><span class="line">access = null</span><br><span class="line">all = <span class="literal">false</span></span><br><span class="line">allow-same-version = <span class="literal">false</span></span><br><span class="line">also = null</span><br><span class="line">audit = <span class="literal">true</span></span><br><span class="line">audit-level = null</span><br><span class="line">auth-type = <span class="string">&quot;web&quot;</span></span><br><span class="line">before = null</span><br><span class="line">bin-links = <span class="literal">true</span></span><br><span class="line">browser = null</span><br><span class="line">ca = null</span><br><span class="line">cache = <span class="string">&quot;/Users/duyafei/.npm&quot;</span></span><br><span class="line">cache-max = null</span><br><span class="line">cache-min = 0</span><br><span class="line">cafile = null</span><br><span class="line">call = <span class="string">&quot;&quot;</span></span><br><span class="line">cert = null</span><br><span class="line">cidr = null</span><br><span class="line">color = <span class="literal">true</span></span><br><span class="line">commit-hooks = <span class="literal">true</span></span><br><span class="line">cpu = null</span><br><span class="line">depth = null</span><br><span class="line">description = <span class="literal">true</span></span><br><span class="line">dev = <span class="literal">false</span></span><br><span class="line">diff = []</span><br><span class="line">diff-dst-prefix = <span class="string">&quot;b/&quot;</span></span><br><span class="line">diff-ignore-all-space = <span class="literal">false</span></span><br><span class="line">diff-name-only = <span class="literal">false</span></span><br><span class="line">diff-no-prefix = <span class="literal">false</span></span><br><span class="line">diff-src-prefix = <span class="string">&quot;a/&quot;</span></span><br><span class="line">diff-text = <span class="literal">false</span></span><br><span class="line">diff-unified = 3</span><br><span class="line">dry-run = <span class="literal">false</span></span><br><span class="line">editor = <span class="string">&quot;vi&quot;</span></span><br><span class="line">engine-strict = <span class="literal">false</span></span><br><span class="line">expect-result-count = null</span><br><span class="line">expect-results = null</span><br><span class="line">fetch-retries = 2</span><br><span class="line">fetch-retry-factor = 10</span><br><span class="line">fetch-retry-maxtimeout = 60000</span><br><span class="line">fetch-retry-mintimeout = 10000</span><br><span class="line">fetch-timeout = 300000</span><br><span class="line">force = <span class="literal">false</span></span><br><span class="line">foreground-scripts = <span class="literal">false</span></span><br><span class="line">format-package-lock = <span class="literal">true</span></span><br><span class="line">fund = <span class="literal">true</span></span><br><span class="line">git = <span class="string">&quot;git&quot;</span></span><br><span class="line">git-tag-version = <span class="literal">true</span></span><br><span class="line">global = <span class="literal">false</span></span><br><span class="line">global-style = <span class="literal">false</span></span><br><span class="line">globalconfig = <span class="string">&quot;/opt/middleware/nvm/versions/node/v21.7.1/etc/npmrc&quot;</span></span><br><span class="line">heading = <span class="string">&quot;npm&quot;</span></span><br><span class="line">https-proxy = null</span><br><span class="line">if-present = <span class="literal">false</span></span><br><span class="line">ignore-scripts = <span class="literal">false</span></span><br><span class="line">include = []</span><br><span class="line">include-staged = <span class="literal">false</span></span><br><span class="line">include-workspace-root = <span class="literal">false</span></span><br><span class="line">init-author-email = <span class="string">&quot;&quot;</span></span><br><span class="line">init-author-name = <span class="string">&quot;&quot;</span></span><br><span class="line">init-author-url = <span class="string">&quot;&quot;</span></span><br><span class="line">init-license = <span class="string">&quot;ISC&quot;</span></span><br><span class="line">init-module = <span class="string">&quot;/Users/duyafei/.npm-init.js&quot;</span></span><br><span class="line">init-version = <span class="string">&quot;1.0.0&quot;</span></span><br><span class="line">init.author.email = <span class="string">&quot;&quot;</span></span><br><span class="line">init.author.name = <span class="string">&quot;&quot;</span></span><br><span class="line">init.author.url = <span class="string">&quot;&quot;</span></span><br><span class="line">init.license = <span class="string">&quot;ISC&quot;</span></span><br><span class="line">init.module = <span class="string">&quot;/Users/duyafei/.npm-init.js&quot;</span></span><br><span class="line">init.version = <span class="string">&quot;1.0.0&quot;</span></span><br><span class="line">install-links = <span class="literal">false</span></span><br><span class="line">install-strategy = <span class="string">&quot;hoisted&quot;</span></span><br><span class="line">json = <span class="literal">false</span></span><br><span class="line">key = null</span><br><span class="line">legacy-bundling = <span class="literal">false</span></span><br><span class="line">legacy-peer-deps = <span class="literal">false</span></span><br><span class="line">libc = null</span><br><span class="line"><span class="built_in">link</span> = <span class="literal">false</span></span><br><span class="line">local-address = null</span><br><span class="line">location = <span class="string">&quot;user&quot;</span></span><br><span class="line">lockfile-version = null</span><br><span class="line">loglevel = <span class="string">&quot;notice&quot;</span></span><br><span class="line">logs-dir = null</span><br><span class="line">logs-max = 10</span><br><span class="line">; long = <span class="literal">false</span> ; overridden by cli</span><br><span class="line">maxsockets = 15</span><br><span class="line">message = <span class="string">&quot;%s&quot;</span></span><br><span class="line">node-options = null</span><br><span class="line">noproxy = [<span class="string">&quot;&quot;</span>]</span><br><span class="line">npm-version = <span class="string">&quot;10.5.0&quot;</span></span><br><span class="line">offline = <span class="literal">false</span></span><br><span class="line">omit = []</span><br><span class="line">omit-lockfile-registry-resolved = <span class="literal">false</span></span><br><span class="line">only = null</span><br><span class="line">optional = null</span><br><span class="line">os = null</span><br><span class="line">otp = null</span><br><span class="line">pack-destination = <span class="string">&quot;.&quot;</span></span><br><span class="line">package = []</span><br><span class="line">package-lock = <span class="literal">true</span></span><br><span class="line">package-lock-only = <span class="literal">false</span></span><br><span class="line">parseable = <span class="literal">false</span></span><br><span class="line">prefer-dedupe = <span class="literal">false</span></span><br><span class="line">prefer-offline = <span class="literal">false</span></span><br><span class="line">prefer-online = <span class="literal">false</span></span><br><span class="line">prefix = <span class="string">&quot;/opt/middleware/nvm/versions/node/v21.7.1&quot;</span></span><br><span class="line">preid = <span class="string">&quot;&quot;</span></span><br><span class="line">production = null</span><br><span class="line">progress = <span class="literal">true</span></span><br><span class="line">provenance = <span class="literal">false</span></span><br><span class="line">provenance-file = null</span><br><span class="line">proxy = null</span><br><span class="line">read-only = <span class="literal">false</span></span><br><span class="line">rebuild-bundle = <span class="literal">true</span></span><br><span class="line">; registry = <span class="string">&quot;https://registry.npmjs.org/&quot;</span> ; overridden by user</span><br><span class="line">replace-registry-host = <span class="string">&quot;npmjs&quot;</span></span><br><span class="line">save = <span class="literal">true</span></span><br><span class="line">save-bundle = <span class="literal">false</span></span><br><span class="line">save-dev = <span class="literal">false</span></span><br><span class="line">save-exact = <span class="literal">false</span></span><br><span class="line">save-optional = <span class="literal">false</span></span><br><span class="line">save-peer = <span class="literal">false</span></span><br><span class="line">save-prefix = <span class="string">&quot;^&quot;</span></span><br><span class="line">save-prod = <span class="literal">false</span></span><br><span class="line">sbom-format = null</span><br><span class="line">sbom-type = <span class="string">&quot;library&quot;</span></span><br><span class="line">scope = <span class="string">&quot;&quot;</span></span><br><span class="line">script-shell = null</span><br><span class="line">searchexclude = <span class="string">&quot;&quot;</span></span><br><span class="line">searchlimit = 20</span><br><span class="line">searchopts = <span class="string">&quot;&quot;</span></span><br><span class="line">searchstaleness = 900</span><br><span class="line">shell = <span class="string">&quot;/bin/zsh&quot;</span></span><br><span class="line">shrinkwrap = <span class="literal">true</span></span><br><span class="line">sign-git-commit = <span class="literal">false</span></span><br><span class="line">sign-git-tag = <span class="literal">false</span></span><br><span class="line">strict-peer-deps = <span class="literal">false</span></span><br><span class="line">; strict-ssl = <span class="literal">true</span> ; overridden by user</span><br><span class="line">tag = <span class="string">&quot;latest&quot;</span></span><br><span class="line">tag-version-prefix = <span class="string">&quot;v&quot;</span></span><br><span class="line">timing = <span class="literal">false</span></span><br><span class="line"><span class="built_in">umask</span> = 0</span><br><span class="line">unicode = <span class="literal">true</span></span><br><span class="line">update-notifier = <span class="literal">true</span></span><br><span class="line">usage = <span class="literal">false</span></span><br><span class="line">user-agent = <span class="string">&quot;npm/&#123;npm-version&#125; node/&#123;node-version&#125; &#123;platform&#125; &#123;arch&#125; workspaces/&#123;workspaces&#125; &#123;ci&#125;&quot;</span></span><br><span class="line">userconfig = <span class="string">&quot;/Users/duyafei/.npmrc&quot;</span></span><br><span class="line">version = <span class="literal">false</span></span><br><span class="line">versions = <span class="literal">false</span></span><br><span class="line">viewer = <span class="string">&quot;man&quot;</span></span><br><span class="line"><span class="built_in">which</span> = null</span><br><span class="line">workspace = []</span><br><span class="line">workspaces = null</span><br><span class="line">workspaces-update = <span class="literal">true</span></span><br><span class="line"><span class="built_in">yes</span> = null</span><br><span class="line"></span><br><span class="line">; <span class="string">&quot;user&quot;</span> config from /Users/duyafei/.npmrc</span><br><span class="line"></span><br><span class="line">//repo3.corpautohome.com/repository/npm-group/:_password = (protected)</span><br><span class="line">//repo3.corpautohome.com/repository/npm-group/:username = <span class="string">&quot;npm&quot;</span></span><br><span class="line">registry = <span class="string">&quot;https://registry.npmmirror.com/&quot;</span></span><br><span class="line">strict-ssl = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">; <span class="string">&quot;cli&quot;</span> config from <span class="built_in">command</span> line options</span><br><span class="line"></span><br><span class="line">long = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</code></pre>
+<hr>
+<h2 id="npm目录结构"><a href="#npm目录结构" class="headerlink" title="npm目录结构"></a>npm目录结构</h2><p><a href="https://docs.npmjs.com/cli/v10/configuring-npm/folders" title="https://docs.npmjs.com/cli/v10/configuring-npm/folders">https://docs.npmjs.com/cli/v10/configuring-npm/folders</a></p>
+<ul>
+<li><code>本地安装</code>（默认）： 安装到<code> ./node_modules</code></li>
+<li><code>全局安装</code>（使用 <code>-g</code>）：安装到  <code>/usr/local</code> 或者 <code>node</code> 的安装目录</li>
+<li>如果要命令行里随时可用， 使用<code>全局安装</code></li>
+</ul>
+<h3 id="prefix-配置"><a href="#prefix-配置" class="headerlink" title="prefix 配置"></a>prefix 配置</h3><p><code>prefix</code> 默认在<code>node</code>安装目录 ，</p>
+<ul>
+<li>大部分都在 <code>/usr/local</code></li>
+<li>On Windows：  it’s <code>%AppData%\npm</code></li>
+<li>On Unix systems：<code>&#123;prefix&#125;/bin/node</code></li>
+</ul>
+<p>使用 <code>npm config -g</code> 查看, 比如我的<code>nvm</code> 管理的node <code>/opt/middleware/nvm/versions/node/v21.7.1</code></p>
+<h3 id="Node-Modules-全局包的安装目录"><a href="#Node-Modules-全局包的安装目录" class="headerlink" title="Node Modules - 全局包的安装目录"></a>Node Modules - 全局包的安装目录</h3><p><code>node_modules</code>包被放入<code>prefix</code></p>
+<ul>
+<li>mac 系统：<code>&#123;prefix&#125;/lib/node_modules</code>，比如我的安装在<code>/opt/middleware/nvm/versions/node/v21.7.1/lib/node_modules</code></li>
+<li>windows系统：<code>&#123;prefix&#125;/node_modules</code>（即没有<code>lib</code>文件夹。）</li>
+</ul>
+<h3 id="Executables-可执行文件"><a href="#Executables-可执行文件" class="headerlink" title="Executables-可执行文件"></a>Executables-可执行文件</h3><ul>
+<li>全局模式： 可执行文件被链接到  mac <code>&#123;prefix&#125;/bin</code>， windows 直接在 <code>&#123;prefix&#125;</code>，确保这个路径在你的<code>path</code> 环境变量里</li>
+<li>本地模式：可执行文件被链接到<code> ./node_modules/.bin</code></li>
+</ul>
+<h3 id="Man-Pages-主页"><a href="#Man-Pages-主页" class="headerlink" title="Man Pages - 主页"></a>Man Pages - 主页</h3><p><code>doc</code> 和<code>man</code>的目录</p>
+<p><code>&#123;prefix&#125;/share/man</code> 比如：<code>/opt/middleware/nvm/versions/node/v21.7.1/share/man</code></p>
+<h3 id="cache-缓存目录"><a href="#cache-缓存目录" class="headerlink" title="cache - 缓存目录"></a>cache - 缓存目录</h3><p>缓存文件存储在 <code>~/.npm</code> on Posix, 或者  <code>%LocalAppData%/npm-cache</code> on Windows</p>
+<p><code>npm config get cache</code> 查看自己的缓存目录，比如：<code>/Users/duyafei/.npm</code></p>
+<h3 id="registry-镜像仓库"><a href="#registry-镜像仓库" class="headerlink" title="registry-镜像仓库"></a>registry-镜像仓库</h3><p><code>npm config get registry</code>  查看， 比如：<a href="https://registry.npmmirror.com/">https://registry.npmmirror.com/</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>nodejs</tag>
+        <tag>npm</tag>
+      </tags>
   </entry>
   <entry>
     <title>测试页面</title>
@@ -214,6 +374,95 @@
       <tags>
         <tag>spring</tag>
         <tag>bean</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nvm-node版本管理</title>
+    <url>/posts/1/</url>
+    <content><![CDATA[<h1 id="nvm-node版本管理"><a href="#nvm-node版本管理" class="headerlink" title="nvm-node版本管理"></a>nvm-node版本管理</h1><p>**<code>Github</code>**：<a href="https://github.com/nvm-sh/nvm" title=" https://github.com/nvm-sh/nvm"> https://github.com/nvm-sh/nvm</a></p>
+<p>**<code>其他文档</code>**：<a href="https://nvm.uihtm.com/#nvm-mac" title="https://nvm.uihtm.com/#nvm-mac">https://nvm.uihtm.com/#nvm-mac</a></p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><code>nvm</code>全英文也叫<code>Node Version Manager</code>，是一个nodejs的版本管理工具。<code>nvm</code>和<code>n</code>都是<code>node.js</code>版本管理工具，为了解决node.js各种版本存在不兼容现象可以通过它可以安装和切换不同版本的node.js。</p>
+<p><code>nvm</code>允许您通过命令行快速安装和使用不同版本的node，</p>
+<p><code>nvm</code> 是一个<code>node.js</code> 的版本管理工具， 支持各种shell （<code>sh</code>, <code>dash</code>, <code>ksh</code>, <code>zsh</code>, <code>bash</code>）</p>
+<h2 id="安装和更新"><a href="#安装和更新" class="headerlink" title="安装和更新"></a>安装和更新</h2><p>‼️不管怎么安装 都是完成两件事</p>
+<ol>
+<li>下载 nvm仓库 得到一个 <code>.nvm </code>&#x20;</li>
+<li>配置 环境变量 ，<ol>
+<li><code>export NVM_DIR=&quot;$HOME/.nvm&quot;</code>     nvm 目录</li>
+<li><code>[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;</code>     加载nvm</li>
+<li><code>[ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \. &quot;$NVM_DIR/bash_completion&quot; </code>   命令行自动补全</li>
+</ol>
+</li>
+</ol>
+<h3 id="脚本安装和更新"><a href="#脚本安装和更新" class="headerlink" title="脚本安装和更新"></a>脚本安装和更新</h3><p>需要安装一个脚本，可以手动<a href="https://github.com/nvm-sh/nvm/blob/v0.39.7/install.sh" title="下载">下载</a>然后运行脚本，也可以执行 <code>curl</code> 或者 <code>wget</code>命令来安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p>运行上面的命令会下载脚本并运行， 这个脚本会clone nvm仓库到 <code>~/.nmv</code> , 并且会添加 一段代码到 配置文件中(<code>~/.bash_profile</code>, <code>~/.zshrc</code>, <code>~/.profile</code>, or <code>~/.bashrc</code>)， 我用的是<code>zsh</code></p>
+<p>所以写到了 <code>~/.zshrc</code> 中</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="subst">$([ -z <span class="string">&quot;<span class="variable">$&#123;XDG_CONFIG_HOME-&#125;</span>&quot;</span> ] &amp;&amp; printf %s <span class="string">&quot;<span class="variable">$&#123;HOME&#125;</span>/.nvm&quot;</span> || printf %s <span class="string">&quot;<span class="variable">$&#123;XDG_CONFIG_HOME&#125;</span>/nvm&quot;</span>)</span>&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> <span class="comment"># This loads nvm</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使配置生效</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<h3 id="完全手动安装"><a href="#完全手动安装" class="headerlink" title="完全手动安装"></a>完全手动安装</h3><p><code>export NVM_DIR=&quot;$HOME/.nvm&quot;</code> 指定 安装目录， 比如我安装到了 <code>/opt/middleware/nvm</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/.nvm&quot;</span> &amp;&amp; (</span><br><span class="line">  git <span class="built_in">clone</span> https://github.com/nvm-sh/nvm.git <span class="string">&quot;<span class="variable">$NVM_DIR</span>&quot;</span></span><br><span class="line">  <span class="built_in">cd</span> <span class="string">&quot;<span class="variable">$NVM_DIR</span>&quot;</span></span><br><span class="line">  git checkout `git describe --abbrev=0 --tags --match <span class="string">&quot;v[0-9]*&quot;</span> $(git rev-list --tags --max-count=1)`</span><br><span class="line">) &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>添加配置到  <code>~/.bashrc</code>, <code>~/.profile</code>, or <code>~/.zshrc</code> 等配置文件中</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> <span class="comment"># This loads nvm</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span>  <span class="comment"># This loads nvm bash_completion</span></span><br></pre></td></tr></table></figure>
+
+<p>使配置生效</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<h3 id="手动升级"><a href="#手动升级" class="headerlink" title="手动升级"></a>手动升级</h3><p>更新nvm 仓库即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(</span><br><span class="line">  <span class="built_in">cd</span> <span class="string">&quot;<span class="variable">$NVM_DIR</span>&quot;</span></span><br><span class="line">  git fetch --tags origin</span><br><span class="line">  git checkout `git describe --abbrev=0 --tags --match <span class="string">&quot;v[0-9]*&quot;</span> $(git rev-list --tags --max-count=1)`</span><br><span class="line">) &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>‼️‼️在安装<code>node</code>的时候，nvm 将不同的 <code>node</code> 版本存储到 <code>~/.nvm/&lt;version&gt;/</code> 下，然后修改 <code>$PATH</code>，将指定版本的 <code>node</code> 路径加入，这样我们调用的 <code>node</code> 命令即是使用指定版本的 node</p>
+<p><code>nvm</code> 的全局模块存在于各自版本的沙箱中，切换版本后需要<code>重新安装</code>，<code>不同版本间也不存在任何冲突</code></p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
+<li><code>nvm instlal node</code>   安装最新版本</li>
+<li><code>nvm instlal --lts</code>   安装最新的长期支持版本</li>
+<li><code>nvm install [node版本号] </code>指定版本安装，可以不写全</li>
+<li><code>nvm ls-remote </code> 查看可用版本</li>
+<li><code>nvm ls-remote --lts </code> 查看长期支持版本可用版本</li>
+<li><code>nvm use [node版本号]</code>  切换到指定版本 node，可以不写全</li>
+<li><code>nvm use node</code> 使用已安装的最新版本</li>
+<li><code>nvm current</code>  查看当前版本</li>
+<li><code>nvm ls </code>列出所有已安装的 node 版本</li>
+<li><code>nvm which [node版本号]</code>  查看指定版本node的安装目录</li>
+</ul>
+<h3 id="安装包管理器"><a href="#安装包管理器" class="headerlink" title="安装包管理器"></a>安装包管理器</h3><p>npm node安装时已有</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g pnpm</span><br><span class="line"></span><br><span class="line">npm install -g yarn</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>查看 pnpm yarn安装位置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ <span class="built_in">which</span> pnpm                                                      [23:35:04]</span><br><span class="line">/opt/middleware/nvm/versions/node/v20.11.1/bin/pnpm</span><br><span class="line">➜  ~ <span class="built_in">which</span> yarn                                                      [23:35:08]</span><br><span class="line">/opt/middleware/nvm/versions/node/v20.11.1/bin/yarn</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用国内镜像，安装node版本"><a href="#使用国内镜像，安装node版本" class="headerlink" title="使用国内镜像，安装node版本"></a>使用国内镜像，安装node版本</h3><h5 id="阿里云镜像"><a href="#阿里云镜像" class="headerlink" title="阿里云镜像"></a>阿里云镜像</h5><p>nvm npm_mirror <a href="https://npmmirror.com/mirrors/npm/" title="https://npmmirror.com/mirrors/npm/">https://npmmirror.com/mirrors/npm/</a></p>
+<p>nvm node_mirror <a href="https://npmmirror.com/mirrors/node/" title="https://npmmirror.com/mirrors/node/">https://npmmirror.com/mirrors/node/</a></p>
+<h5 id="腾讯云镜像"><a href="#腾讯云镜像" class="headerlink" title="腾讯云镜像"></a>腾讯云镜像</h5><p>nvm npm_mirror <a href="http://mirrors.cloud.tencent.com/npm/" title="http://mirrors.cloud.tencent.com/npm/">http://mirrors.cloud.tencent.com/npm/</a></p>
+<p>nvm node_mirror <a href="http://mirrors.cloud.tencent.com/nodejs-release/" title="http://mirrors.cloud.tencent.com/nodejs-release/">http://mirrors.cloud.tencent.com/nodejs-release/</a></p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><ul>
+<li><code>NVM_DIR</code> - nvm’s installation directory.</li>
+<li><code>NVM_BIN</code> - where node, npm, and global packages for the active version of node are installed.</li>
+<li><code>NVM_INC</code> - node’s include file directory (useful for building C&#x2F;C++ addons for node).</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ <span class="built_in">echo</span> <span class="variable">$NVM_DIR</span>                                                   [23:35:11]</span><br><span class="line">/opt/middleware/nvm</span><br><span class="line">➜  ~ <span class="built_in">echo</span> <span class="variable">$NVM_BIN</span>                                                   [23:35:35]</span><br><span class="line">/opt/middleware/nvm/versions/node/v20.11.1/bin</span><br><span class="line">➜  ~ <span class="built_in">echo</span> <span class="variable">$NVM_INC</span>                                                   [23:35:46]</span><br><span class="line">/opt/middleware/nvm/versions/node/v20.11.1/include/node</span><br></pre></td></tr></table></figure>
+
+<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><p>删除 <code>.nvm </code>整个目录&#x20;</p>
+<p>删除配置文件中添加的代码</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> <span class="comment"># This loads nvm</span></span><br><span class="line">[[ -r <span class="variable">$NVM_DIR</span>/bash_completion ]] &amp;&amp; \. <span class="variable">$NVM_DIR</span>/bash_completion</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>nodejs</tag>
+        <tag>npm</tag>
+        <tag>nvm</tag>
+        <tag>pnpm</tag>
+        <tag>yarn</tag>
       </tags>
   </entry>
 </search>
